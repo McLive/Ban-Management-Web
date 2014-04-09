@@ -11,24 +11,18 @@
 |
 */
 
-//Default
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('frontend/index');
 });
 
-//Template Default (User View) | Admin (Admin Dashboard)
-Route::get('blank/default', function()
+Route::get('admin', function()
 {
-	return View::make('blank_default');
-});
-Route::get('blank/admin', function()
-{
-	return View::make('blank_admin');
+	return View::make('backend/index');
 });
 
 //404 Error
 App::missing(function($exception)
 {
-    return "404";
+    return "Error 404";
 });
