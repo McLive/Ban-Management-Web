@@ -9,7 +9,7 @@
 		</ul>
 
 		<div class="content">
-			<h1 class="text-success"><i class="fa fa-check"></i> Finished</h1><hr/>
+			<h1>Finished</h1><hr/>
 			<p class="lead">Congratulations! Ban-Management has been installed successfully.</p>
 			<p class="bg-warning">Please delete the installation directory at <kbd><?php echo getcwd(); ?></kbd>. We will remind you until you do it, so better do it now. ;)</p>
 		</div>

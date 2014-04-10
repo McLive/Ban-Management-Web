@@ -61,8 +61,8 @@ function secretkey($total_lenght) {
 						</select>
 					</div>
 					<div class="form-group">
-						 <label>Security Key</label><input type="text" class="form-control" name="password" maxlength="32" value="<? echo secretkey(32) ?>" required />
-             <span class="help-block">This can't be longer then 32 chars</span>
+						 <label>Security Key</label><input type="text" class="form-control" name="password" maxlength="32" value="<?php echo secretkey(32) ?>" required readonly />
+						 <span class="help-block">This key was generated randomly only for your site. Don't give it away!</span>
 					</div>
 					<div class="form-group">
 						<label><i class="fa fa-info-circle"></i> Heads up!</label>

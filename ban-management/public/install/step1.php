@@ -11,13 +11,14 @@
 		<div class="content">
 			<h1>Welcome to the Ban-Management of tomorrow!</h1><hr/>
 			<p class="lead">This Installer will guide you through the installation of the website interface.</p>
-      <h2>Requirements</h2>
-      <ul class="list-unstyled">
-        <li><i class="fa fa-check text-success"></i> Ban-Manager installed on your bukkit server</li>
-        <li><i class="fa fa-check text-success"></i> Ban-Manager connected to a MySQL database</li>
-        <li><i class="fa fa-check text-success"></i> PHP 5.3.7 or higher installed on your web server</li>
-        <li><i class="fa fa-check text-success"></i> MCrypt PHP Extension installed on your web server</li>
-      </ul>
+			<br />
+			<h2>Requirements</h2>
+			<ul>
+				<li>Ban-Management installed on your Bukkit server</li>
+				<li>Ban-Management connected to a MySQL database</li>
+				<li>PHP 5.3.7 or higher installed on your web server</li>
+				<li>MCrypt PHP Extension installed on your web server</li>
+			  </ul>
 		</div>
 
 		<div class="buttons">
