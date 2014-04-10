@@ -13,5 +13,17 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('frontend/index');
 });
+
+Route::get('admin', function()
+{
+	return View::make('backend/index');
+});
+
+/*
+App::missing(function($exception)
+{
+    return "Error 404!<br />".$exception;
+});
+*/
