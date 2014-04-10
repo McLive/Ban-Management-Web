@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    @include('frontend/header')
+    @include('site/header')
     <title>{{ trans('site.ba') }}</title>
   </head>
   <body style="padding-top: 60px;">

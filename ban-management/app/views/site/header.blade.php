@@ -4,11 +4,11 @@
 
     <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/font-awesome.min.css') }}">
-	<link rel="stylesheet" href="{{ URL::asset('assets/css/frontend.css') }}">
+	<link rel="stylesheet" href="{{ URL::asset('assets/css/site.css') }}">
 	
 	<script src="{{ URL::asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}"></script>
-	<script src="{{ URL::asset('assets/js/frontend.js') }}"></script>
+	<script src="{{ URL::asset('assets/js/site.js') }}"></script>
 	
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

@@ -13,12 +13,12 @@
 
 Route::get('/', function()
 {
-	return View::make('frontend/index');
+	return View::make('site/index');
 });
 
 Route::get('admin', function()
 {
-	return View::make('backend/index');
+	return View::make('admin/index');
 });
 
 /*

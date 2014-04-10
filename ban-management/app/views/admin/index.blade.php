@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    @include('backend/header')
+    @include('admin/header')
     <title>{{ trans('site.dashboard') }} | {{ trans('site.ba') }}</title>
   </head>
   <body>
