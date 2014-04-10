@@ -16,6 +16,11 @@ Route::get('/', function()
 	return View::make('site/index');
 });
 
+Route::get('/Test', function()
+{
+	return View::make('site/test');
+});
+
 Route::get('admin', function()
 {
 	return View::make('admin/index');
