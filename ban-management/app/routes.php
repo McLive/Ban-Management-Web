@@ -21,8 +21,9 @@ Route::get('admin', function()
 	return View::make('backend/index');
 });
 
-//404 Error
+/*
 App::missing(function($exception)
 {
-    return "Error 404";
+    return "Error 404!<br />".$exception;
 });
+*/

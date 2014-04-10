@@ -1,18 +1,8 @@
-<!--
-#
-#
-#
-#Idea Template
-#PHP / blade need
-#
-#
-#
--->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     @include('frontend/header')
-    <title>Blank | Default</title>
+    <title>{{ trans('site.ba') }}</title>
   </head>
   <body style="padding-top: 60px;">
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -24,14 +14,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">SERVERNAME</a>
+          <a class="navbar-brand" href="#">{{ trans('site.ba') }}</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Users</a></li>
-            <li><a href="#">Ban-Appeal</a></li>
-            <li><a href="#">Stats</a></li>
+            <li class="active"><a href="#">{{ trans('site.home') }}</a></li>
+            <li><a href="#">{{ trans('site.players') }}</a></li>
+            <li><a href="#">{{ trans('site.stats') }}</a></li>
+            <li><a href="#">{{ trans('site.appeal') }}</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -40,7 +30,7 @@
     <div class="container">
 
       <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
+        <h1>{{ trans('site.ba') }}</h1>
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
       </div>
 

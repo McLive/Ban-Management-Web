@@ -1,18 +1,8 @@
-<!--
-#
-#
-#
-#Idea Template
-#PHP / blade need
-#
-#
-#
--->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     @include('backend/header')
-    <title>Blank | Admin</title>
+    <title>{{ trans('site.dashboard') }} | {{ trans('site.ba') }}</title>
   </head>
   <body>
     <div id="wrapper">
@@ -25,9 +15,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">SERVERNAME</a>
+                <a class="navbar-brand" href="#">{{ trans('site.ba') }} <i class="fa fa-chevron-right"></i> {{ trans('site.dashboard') }}</a>
             </div>
-            <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
