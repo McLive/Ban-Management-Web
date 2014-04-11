@@ -11,6 +11,11 @@
 		<div class="content">
 			<h1>Welcome to the Ban-Management of tomorrow!</h1><hr/>
 			<p class="lead">This Installer will guide you through the installation of the website interface.</p>
+			
+			<noscript>
+				<p class="bg-warning"><strong><i class="fa fa-exclamation-triangle"></i> Javascript deactivated!</strong> The installer requires Javascript to run. It will not work without it!</p>
+			</noscript>
+			
 			<br />
 			<h2>Requirements</h2>
 			<ul>
@@ -18,7 +23,7 @@
 				<li>Ban-Management connected to a MySQL database</li>
 				<li>PHP 5.3.7 or higher installed on your web server</li>
 				<li>MCrypt PHP Extension installed on your web server</li>
-			  </ul>
+			</ul>
 		</div>
 
 		<div class="buttons">

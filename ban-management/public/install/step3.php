@@ -13,10 +13,12 @@
 			<p class="lead">Please wait while we make everything ready for you.</p>
 
 			<div class="progress progress-striped active">
-				<div class="progress-bar"  role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+				<div class="progress-bar"  role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;" id="progress-bar">
 				<span class="sr-only">Installing...</span>
 			  </div>
 			</div>
+			
+			<pre class="console" id="output"><strong>Console:</strong></pre>
 		</div>
 
 		<div class="buttons">
@@ -28,4 +30,6 @@
 		</div>
     </div>
 
+<?php require_once "installer.php"; ?>
+	
 <?php require_once "footer.php"; ?>

@@ -2,21 +2,27 @@
 
 require_once 'header.php';
 
-function secretkey($total_lenght) {
-
+function getSecretKey($total_lenght) {
     $output_code = NULL;
     $total_lenght - 1;
     $part = 1;
     $code = array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','0','1','2','3','4','5','6','7','8','9');
-        while ($part <= $total_lenght) {
-            $output_code .= $code[rand(0,61)];
-            $part ++;
-        }
+    while ($part <= $total_lenght) {
+        $output_code .= $code[rand(0,61)];
+        $part ++;
+    }
     return $output_code;
 }
 
- ?>
+function getUrl() {
+	$url  = @( $_SERVER["HTTPS"] != 'on' ) ? 'http://'.$_SERVER["SERVER_NAME"] :  'https://'.$_SERVER["SERVER_NAME"];
+	$url .= ( $_SERVER["SERVER_PORT"] != 80 ) ? ":".$_SERVER["SERVER_PORT"] : "";
+	$url .= $_SERVER["REQUEST_URI"];
+	return $url;
+}
 
+ ?>
+ 
     <div class="container">
 		<ul class="wizard">
 			<li class="text-muted"><span class="badge">1 <i class="fa fa-check fa-fw"></i></span> <span class="hidden-xs">Welcome</span></li>
@@ -27,7 +33,7 @@ function secretkey($total_lenght) {
 
 		<div class="content">
 			<h1>Configuration</h1><hr/>
-			<form role="form" name="form" class="row center-text">
+			<form name="form" class="row center-text" action="step3.php" method="post" role="form">
 				<div class="form-section col-sm-6">
 					<h2>Database</h2>
 					<div class="form-group">
@@ -51,7 +57,8 @@ function secretkey($total_lenght) {
 				<div class="form-section col-sm-6">
 					<h2>System settings</h2>
 					<div class="form-group">
-						 <label>Site URL</label><input type="text" class="form-control" name="location" placeholder="http://www.awesome-server.com" />
+						 <label>Site URL</label><input type="text" class="form-control" name="location" placeholder="http://www.awesome-server.com/ban-management" />
+						 <span class="help-block">We think this is: <?php echo str_replace("public/install/step2.php", "", getUrl()); ?></span>
 					</div>
 					<div class="form-group">
 						 <label>Locale</label>
@@ -61,19 +68,19 @@ function secretkey($total_lenght) {
 						</select>
 					</div>
 					<div class="form-group">
-						 <label>Security Key</label><input type="text" class="form-control" name="password" maxlength="32" value="<?php echo secretkey(32) ?>" required readonly />
+						 <label>Security Key</label><input type="text" class="form-control" name="key" maxlength="32" value="<?php echo getSecretKey(32) ?>" required readonly />
 						 <span class="help-block">This key was generated randomly only for your site. Don't give it away!</span>
 					</div>
 					<div class="form-group">
 						<label><i class="fa fa-info-circle"></i> Heads up!</label>
-						 <p>Once the installation is finished, please go on creating a master account for the admin panel.</p>
+						 <p>Once the installation is finished, please create a master account for the admin panel.</p>
 					</div>
 				</div>
 			</form>
 		</div>
 
 		<div class="buttons">
-			<a href="step3.php" class="btn btn-primary">Continue <i class="fa fa-chevron-right"></i></a>
+			<button onclick="submitForm();" class="btn btn-primary">Continue <i class="fa fa-chevron-right"></i></button>
 		</div>
 
 		<div class="footer">
