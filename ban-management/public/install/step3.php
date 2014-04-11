@@ -17,11 +17,11 @@
 				<span class="sr-only">Installing...</span>
 			  </div>
 			</div>
-			
+
 			<pre class="console" id="output"><strong>Console:</strong></pre>
 		</div>
 
-		<div class="buttons">
+		<div class="buttons" id="back">
 		</div>
 
 		<div class="footer">
@@ -31,5 +31,5 @@
     </div>
 
 <?php require_once "installer.php"; ?>
-	
+
 <?php require_once "footer.php"; ?>
