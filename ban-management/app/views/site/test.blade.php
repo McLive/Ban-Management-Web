@@ -86,10 +86,10 @@
 
                     <li class="media">
                       <a class="pull-left" href="#">
-                        <img class="media-object img-rounded" src="https://minotar.net/helm/ftblaster/40.png" alt="ftblaster">
+                        <img class="media-object img-rounded" src="https://minotar.net/helm/ftbastler/40.png" alt="ftbastler">
                       </a>
                       <div class="media-body">
-                        <h5 class="media-heading">ftblaster</h5>
+                        <h5 class="media-heading">ftbastler</h5>
                         <time class="text-muted">banned 14 minutes ago</time>
                       </div>
                     </li>
@@ -142,10 +142,10 @@
 
                     <li class="media">
                       <a class="pull-left" href="#">
-                        <img class="media-object img-rounded" src="https://minotar.net/helm/ftblaster/40.png" alt="ftblaster">
+                        <img class="media-object img-rounded" src="https://minotar.net/helm/ftbastler/40.png" alt="ftbastler">
                       </a>
                       <div class="media-body">
-                        <h5 class="media-heading">ftblaster</h5>
+                        <h5 class="media-heading">ftbastler</h5>
                         <time class="text-muted">kicked 14 minutes ago</time>
                       </div>
                     </li>
@@ -215,10 +215,10 @@
 
                     <li class="media">
                       <a class="pull-left" href="#">
-                        <img class="media-object img-rounded" src="https://minotar.net/helm/ftblaster/40.png" alt="ftblaster">
+                        <img class="media-object img-rounded" src="https://minotar.net/helm/ftbastler/40.png" alt="ftbastler">
                       </a>
                       <div class="media-body">
-                        <h5 class="media-heading">ftblaster</h5>
+                        <h5 class="media-heading">ftbastler</h5>
                         <time class="text-muted">warned 14 minutes ago</time>
                       </div>
                     </li>
@@ -271,10 +271,10 @@
 
                     <li class="media">
                       <a class="pull-left" href="#">
-                        <img class="media-object img-rounded" src="https://minotar.net/helm/ftblaster/40.png" alt="ftblaster">
+                        <img class="media-object img-rounded" src="https://minotar.net/helm/ftbastler/40.png" alt="ftbastler">
                       </a>
                       <div class="media-body">
-                        <h5 class="media-heading">ftblaster</h5>
+                        <h5 class="media-heading">ftbastler</h5>
                         <time class="text-muted">muted 14 minutes ago</time>
                       </div>
                     </li>
@@ -357,10 +357,10 @@
 
                   <li class="media">
                     <a class="pull-left" href="#">
-                      <img class="media-object img-rounded" src="https://minotar.net/helm/ftblaster/40.png" alt="ftblaster">
+                      <img class="media-object img-rounded" src="https://minotar.net/helm/ftbastler/40.png" alt="ftbastler">
                     </a>
                     <div class="media-body">
-                      <h5 class="media-heading">ftblaster</h5>
+                      <h5 class="media-heading">ftbastler</h5>
                       <time class="text-muted">banned 14 days ago</time>
                     </div>
                   </li>
@@ -403,10 +403,10 @@
 
                   <li class="media">
                     <a class="pull-left" href="#">
-                      <img class="media-object img-rounded" src="https://minotar.net/helm/ftblaster/40.png" alt="ftblaster">
+                      <img class="media-object img-rounded" src="https://minotar.net/helm/ftbastler/40.png" alt="ftbastler">
                     </a>
                     <div class="media-body">
-                      <h5 class="media-heading">ftblaster</h5>
+                      <h5 class="media-heading">ftbastler</h5>
                       <time class="text-muted">kicked 14 minutes ago</time>
                     </div>
                   </li>
@@ -476,10 +476,10 @@
 
                   <li class="media">
                     <a class="pull-left" href="#">
-                      <img class="media-object img-rounded" src="https://minotar.net/helm/ftblaster/40.png" alt="ftblaster">
+                      <img class="media-object img-rounded" src="https://minotar.net/helm/ftbastler/40.png" alt="ftbastler">
                     </a>
                     <div class="media-body">
-                      <h5 class="media-heading">ftblaster</h5>
+                      <h5 class="media-heading">ftbastler</h5>
                       <time class="text-muted">warned 14 minutes ago</time>
                     </div>
                   </li>
@@ -532,10 +532,10 @@
 
                   <li class="media">
                     <a class="pull-left" href="#">
-                      <img class="media-object img-rounded" src="https://minotar.net/helm/ftblaster/40.png" alt="ftblaster">
+                      <img class="media-object img-rounded" src="https://minotar.net/helm/ftbastler/40.png" alt="ftbastler">
                     </a>
                     <div class="media-body">
-                      <h5 class="media-heading">ftblaster</h5>
+                      <h5 class="media-heading">ftbastler</h5>
                       <time class="text-muted">muted 14 minutes ago</time>
                     </div>
                   </li>
