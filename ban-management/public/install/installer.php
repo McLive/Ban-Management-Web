@@ -25,6 +25,26 @@
 		
 		sleep(1);
 		
+		if(!is_readable($url.'app/config/app.php')) {
+			output(1, "Can't install. Can not read from app.php. (Error #002)");
+			return;
+		}
+		
+		if(!is_readable($url.'app/config/database.php')) {
+			output(1, "Can't install. Can not read from database.php. (Error #003)");
+			return;
+		}
+		
+		if(!is_writable($url.'app/config/app.php')) {
+			output(1, "Can't install. Can not write to app.php. (Error #004)");
+			return;
+		}
+		
+		if(!is_writable($url.'app/config/database.php')) {
+			output(1, "Can't install. Can not write to database.php. (Error #005)");
+			return;
+		}
+		
 		output(0, "Opening configuration files");
 		$app_config = file_get_contents($url.'app/config/app.php');
 		$db_config = file_get_contents($url.'app/config/database.php');
