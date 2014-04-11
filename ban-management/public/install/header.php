@@ -16,6 +16,10 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->    
 	
+	<script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/scripts.js"></script>
+	
 	<title>Installer | Ban Management</title>
   </head>
   <body style="padding-top: 60px;">
