@@ -1,7 +1,7 @@
-<?php 
+<?php
 
 return array(
-	
+
 	'ba' => 'Ban Management',
 	'language' => 'Language',
 	'players' => 'Players',
@@ -12,5 +12,5 @@ return array(
 	'site' => 'Site',
 	'admin' => 'Admin',
 	'dashboard' => 'Dashboard'
-	
+
 );

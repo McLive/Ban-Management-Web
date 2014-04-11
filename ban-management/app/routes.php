@@ -16,6 +16,22 @@ Route::get('/', function()
 	return View::make('site/index');
 });
 
+Route::get('/test', function()
+{
+	return View::make('site/test');
+});
+
+Route::get('/user/{username?}', function($username = 'Notch')
+{
+	if ($username) {
+		return View::make('site/user')
+				->with('username', $username);
+	}
+	else {
+		return View::make('site/index');
+	}
+});
+
 Route::get('admin', function()
 {
 	return View::make('admin/index');
