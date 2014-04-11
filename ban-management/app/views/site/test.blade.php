@@ -31,16 +31,14 @@
         <div class="container">
           <h1 class="text-center">Got banned?</h1>
           <br/>
-          <form>
-            <div class="col-lg-6 col-lg-offset-3">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Enter your username" autofocus="true" />
-                <span class="input-group-btn">
-                  <button class="btn btn-default"><i class="fa fa-search fa-fw"></i> Check</button>
-                </span>
-              </div>
+          <div class="col-lg-6 col-lg-offset-3">
+            <div class="input-group" id="form_div">
+              <input type="text" name="username" id="username" class="form-control" placeholder="Enter your username" autofocus="true" required />
+              <span class="input-group-btn">
+                <button class="btn btn-default" onclick="search()" id="search_btn"><i class="fa fa-search fa-fw"></i> Check</button>
+              </span>
             </div>
-          </form>
+          </div>
         </div>
       </div>
 
@@ -52,7 +50,7 @@
 
       <!-- Tab panes -->
       <ul class="tab-content">
-        <li class="tab-pane active" id="hub">
+        <li class="tab-pane fade in active" id="hub">
 
           <div class="row">
             <br/>
@@ -313,7 +311,7 @@
         </div>
       </li> <!--End first tab-->
 
-      <li class="tab-pane" id="pvp">
+      <li class="tab-pane fade" id="pvp">
 
         <div class="row">
           <br/>
@@ -577,6 +575,18 @@
     </ul>
 
     </div><!-- /.container -->
+
+    <script type="text/javascript">
+      function search() {
+        var username = $('#username').val();
+        if (username) {
+          $(location).attr('href','user/'+username);
+        }
+        else {
+          $('#form_div').addClass('has-error');
+        }
+      }
+    </script>
 
   </body>
 </html>
