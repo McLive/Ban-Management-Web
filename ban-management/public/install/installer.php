@@ -51,7 +51,7 @@
 		$db_config = file_get_contents($url.'app/config/database.php');
 
 		output(0, "Inserting settings");
-		$app_config = str_replace(".LOCALE", $_POST['locale'], $app_config, $checksum);
+		$app_config = str_replace(":LOCALE", $_POST['locale'], $app_config, $checksum);
 		$app_config = str_replace(":URL", $_POST['location'], $app_config, $checksum);
 		$app_config = str_replace(":KEY", $_POST['key'], $app_config, $checksum);
 
