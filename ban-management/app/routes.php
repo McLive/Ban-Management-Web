@@ -16,21 +16,12 @@ Route::get('/', function()
 	return View::make('site/index');
 });
 
-Route::get('/test', function()
+Route::get('user', function()
 {
-	return View::make('site/test');
+	return Redirect::to('/');
 });
 
-Route::get('/user/{username?}', function($username = 'Notch')
-{
-	if ($username) {
-		return View::make('site/user')
-				->with('username', $username);
-	}
-	else {
-		return View::make('site/index');
-	}
-});
+Route::get('user/{name}', 'UserController@showProfile');
 
 Route::get('admin', function()
 {

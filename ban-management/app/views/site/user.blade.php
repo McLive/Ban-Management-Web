@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     @include('site/header')
-    <title>{{{$username}}}</title>
+    <title>{{ $username }} | {{ trans('site.ba') }}</title>
     <script type='text/javascript'>
       $(document).ready(function () {
        if ($("[rel=tooltip]").length) {
