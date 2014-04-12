@@ -1,7 +1,7 @@
 <?php
 
 	function output($type, $text) {
-		$output = '<script type="text/javascript">document.getElementById("output").innerHTML = document.getElementById("output").innerHTML + "<br /> ';
+		$output = '<script type="text/javascript">document.getElementById("output").innerHTML = document.getElementById("output").innerHTML + "<br />> ';
 		$output .= ($type == 1 ? '<font color=\'red\'>'.$text.'</font>";' : $text.'";');
 		$output .= ($type == 1 ? 'document.getElementById("progress-bar").style.display = "none";' : '');
 		$output .= ($type == 1 ? 'document.getElementById("back").innerHTML = "<a class=\"btn btn-danger\" href=\"step2.php\"><i class=\"fa fa-chevron-left\"></i> Back</a>"' : '');
