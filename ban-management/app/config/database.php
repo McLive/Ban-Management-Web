@@ -54,13 +54,13 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => ':HOST',
+			'host'      => ':HOSTNAME',
 			'database'  => ':DATABASE',
 			'username'  => ':USERNAME',
 			'password'  => ':PASSWORD',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
-			'prefix'    => ':PREFIX',
+			'prefix'    => '',
 		),
 
 		'pgsql' => array(

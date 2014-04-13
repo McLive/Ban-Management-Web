@@ -20,6 +20,7 @@
 
 	function install() {
 		output(0, "Starting to install");
+		output(0, "");
 
 		$url = '../../';
 		$checksum = 0;
@@ -35,6 +36,11 @@
 			output(1, "Can't install. Can not read from database.php. (Error #003)");
 			return;
 		}
+		
+		if(!is_readable('database.sql')) {
+			output(1, "Can't install. Can not read from database.sql. (Error #008)");
+			return;
+		}
 
 		if(!is_writable($url.'app/config/app.php')) {
 			output(1, "Can't install. Can not write to app.php. (Error #004)");
@@ -45,7 +51,57 @@
 			output(1, "Can't install. Can not write to database.php. (Error #005)");
 			return;
 		}
-
+		
+		output(0, "Connecting to database");
+		$con = @mysql_connect($_POST['hostname'], $_POST['username'], $_POST['password']);
+		if(!$con) {
+			output(1, "Can't connect to database. Check your database information. (Error #006)");
+			output(1, mysql_error());
+			return;
+		}
+		
+		output(0, "Successfully connected");
+		output(0, "Selecting database");
+		
+		sleep(1);
+		
+		$db = @mysql_select_db($_POST['database']);
+		if(!$db) {
+			output(1, "Can't select database. Check your database information. (Error #007)");
+			output(1, mysql_error());
+			return;
+		}
+		
+		output(0, "Successfully opened a SQL connection.");
+		output(0, "Installing database tables");
+		
+		sleep(1);
+		
+		$templine = '';
+		$lines = file('database.sql');
+		foreach($lines as $line)
+		{
+			if(substr($line, 0, 2) == '--' || $line == '')
+				continue;
+			$templine .= $line;
+			if(substr(trim($line), -1, 1) == ';')
+			{
+				output(0, "Executing query: ".$templine);
+				$query = @mysql_query($templine);
+				if(!$query) {
+					output(1, "Error while installing. Could not execute query. (Error #009)");
+					output(1, mysql_error());
+					return;
+				}
+				$templine = '';
+			}
+		}
+		
+		output(0, "Installed database successfully.");
+		output(0, "");
+		
+		sleep(1);
+		
 		output(0, "Opening configuration files");
 		$app_config = file_get_contents($url.'app/config/app.php');
 		$db_config = file_get_contents($url.'app/config/database.php');
@@ -56,21 +112,21 @@
 		$app_config = str_replace(":KEY", $_POST['key'], $app_config, $checksum);
 
 		output(0, "Inserting database info");
-		$db_config = str_replace(":HOST", $_POST['hostname'], $db_config, $checksum);
+		$db_config = str_replace(":HOSTNAME", $_POST['hostname'], $db_config, $checksum);
 		$db_config = str_replace(":DATABASE", $_POST['database'], $db_config, $checksum);
 		$db_config = str_replace(":USERNAME", $_POST['username'], $db_config, $checksum);
 		$db_config = str_replace(":PASSWORD", $_POST['password'], $db_config, $checksum);
-		$db_config = str_replace(":PREFIX", $_POST['prefix'], $db_config, $checksum);
 
 		sleep(1);
 
 		output(0, "Saving configuration files");
 		file_put_contents($url.'app/config/app.php', $app_config);
 		file_put_contents($url.'app/config/database.php', $db_config);
+		
+		output(0, "");
+		output(0, "Success!");
 
-		output(0, "Done.");
-
-		sleep(2);
+		sleep(4);
 
 		finish();
 	}
