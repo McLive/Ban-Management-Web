@@ -603,7 +603,8 @@
           element: 'stats-HUB',
           hideHover: 'auto',
           resize: true,
-          data: data_HUB
+          data: data_HUB,
+          colors: ['#a9acac', '#f9b000', '#f08300', '#c30304']
         }
 
         //PvP Data
@@ -630,7 +631,8 @@
           element: 'stats-PvP',
           hideHover: 'auto',
           resize: true,
-          data: data_PvP
+          data: data_PvP,
+          colors: ['#a9acac', '#f9b000', '#f08300', '#c30304']
         }
 
         HUB = Morris.Donut(stats_HUB);
