@@ -153,7 +153,7 @@
                   <h1 class="panel-title">Statistics</h1>
                 </div>
                 <div class="panel-body">
-                  ...
+                  <div id="stats-HUB" style="height: 205px;"></div>
                 </div>
               </div>
 
@@ -414,7 +414,7 @@
                 <h1 class="panel-title">Statistics</h1>
               </div>
               <div class="panel-body">
-                ...
+                <div id="stats-PvP" style="height: 205px;"></div>
               </div>
             </div>
 
@@ -555,6 +555,10 @@
     </ul>
 
     </div><!-- /.container -->
+    <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+
 
     <script type="text/javascript">
       function search() {
@@ -566,6 +570,27 @@
           $('#form_div').addClass('has-error');
         }
       }
+      //Charts
+      Morris.Donut({
+        element: 'stats-HUB',
+        data: [
+          {label: "Total mutes", value: 129},
+          {label: "Total warns", value: 240},
+          {label: "Total kicks", value: 359},
+          {label: "Total bans", value: 455}
+          ]
+        });
+
+      Morris.Donut({
+        element: 'stats-PvP',
+        data: [
+          {label: "Total mutes", value: 34},
+          {label: "Total warns", value: 22},
+          {label: "Total kicks", value: 340},
+          {label: "Total bans", value: 846}
+          ]
+        });
+
     </script>
 
   </body>
