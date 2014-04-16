@@ -23,6 +23,15 @@ Route::get('user', function()
 
 Route::get('user/{name}', 'UserController@showProfile');
 
+Route::get('account', function() {
+	if (!Auth::check()) {
+		return View::make('site/account/login');
+	}
+	else {
+		return View::make('site/account/account');
+	}
+});
+
 Route::get('admin', function()
 {
 	return View::make('admin/index');
