@@ -17,7 +17,7 @@
       <div class="jumbotron">
         <div class="media">
           <div class="pull-left">
-            <img class="media-object img-rounded" src="https://minotar.net/helm/{{$username}}/150.png" alt="Mr_Maccrafter" style="width: 150px; height: 150px; ">
+            <img class="media-object img-rounded" src="https://minotar.net/helm/{{$username}}/150.png" alt="{{$username}}" style="width: 150px; height: 150px;">
           </div>
           <div class="media-body">
             <h1 class="media-heading">{{$username}} <i class="fa fa-volume-off text-muted" rel="tooltip" data-placement="right" title="Currently muted"></i></h1>
