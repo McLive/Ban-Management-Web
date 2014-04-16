@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     @include('site/header')
+    <link rel="stylesheet" href="assets/css/morris.css">
     <title>{{ trans('site.ba') }}</title>
   </head>
   <body style="padding-top: 60px;">
@@ -24,8 +25,8 @@
 
       <!-- Nav tabs -->
       <ul class="nav nav-tabs">
-        <li class="active"><a href="#hub" data-toggle="tab">HUB</a></li>
-        <li><a href="#pvp" data-toggle="tab">PvP</a></li>
+        <li class="active"><a href="#hub" data-toggle="tab" data-identifier="HUB">HUB</a></li>
+        <li><a href="#pvp" data-toggle="tab" data-identifier="PvP">PvP</a></li>
       </ul>
 
       <!-- Tab panes -->
@@ -555,11 +556,8 @@
     </ul>
 
     </div><!-- /.container -->
-    <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-    <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
-
-
+    <script src="assets/js/raphael.min.js"></script>
+    <script src="assets/js/morris.js"></script>
     <script type="text/javascript">
       function search() {
         var username = $('#username').val();
@@ -570,27 +568,74 @@
           $('#form_div').addClass('has-error');
         }
       }
-      //Charts
-      Morris.Donut({
-        element: 'stats-HUB',
-        data: [
-          {label: "Total mutes", value: 129},
-          {label: "Total warns", value: 240},
-          {label: "Total kicks", value: 359},
-          {label: "Total bans", value: 455}
-          ]
-        });
 
-      Morris.Donut({
-        element: 'stats-PvP',
-        data: [
-          {label: "Total mutes", value: 34},
-          {label: "Total warns", value: 22},
-          {label: "Total kicks", value: 340},
-          {label: "Total bans", value: 846}
-          ]
-        });
+      //Statistics
+      $('ul.nav a').on('shown.bs.tab', function (e) {
+        var types = $(this).attr("data-identifier");
+        var typesArray = types.split(",");
+        $.each(typesArray, function (key, value) {
+          eval(value + ".redraw()");
+        })
+      });
 
+      $(function () {
+        //HUB data
+        var data_HUB = [
+          {
+            label: 'Total mutes',
+            value: 180
+          },
+          {
+            label: 'Total warns',
+            value: 49
+          },
+          {
+            label: 'Total kicks',
+            value: 293
+          },
+          {
+            label: 'Total bans',
+            value: 183
+          }
+          ]
+
+        var stats_HUB = {
+          element: 'stats-HUB',
+          hideHover: 'auto',
+          resize: true,
+          data: data_HUB
+        }
+
+        //PvP Data
+        var data_PvP = [
+          {
+            label: 'Total mutes',
+            value: 36
+          },
+          {
+            label: 'Total warns',
+            value: 37
+          },
+          {
+            label: 'Total kicks',
+            value: 252
+          },
+          {
+            label: 'Total bans',
+            value: 579
+          }
+          ]
+
+        var stats_PvP = {
+          element: 'stats-PvP',
+          hideHover: 'auto',
+          resize: true,
+          data: data_PvP
+        }
+
+        HUB = Morris.Donut(stats_HUB);
+        PvP = Morris.Donut(stats_PvP);
+      });
     </script>
 
   </body>
