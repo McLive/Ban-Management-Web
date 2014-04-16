@@ -16,6 +16,7 @@ Route::get('/', function()
 	return View::make('site/index');
 });
 
+
 Route::get('user', function()
 {
 	return Redirect::to('/');
@@ -23,19 +24,28 @@ Route::get('user', function()
 
 Route::get('user/{name}', 'UserController@showProfile');
 
-Route::get('account', function() {
-	if (!Auth::check()) {
-		return View::make('site/account/login');
+
+Route::get('account', function()
+{
+	if (Auth::check()) {
+		View::make('site/account/account');
 	}
 	else {
-		return View::make('site/account/account');
+		return Redirect::to('account/login');
 	}
 });
+
+Route::get('account/login', function()
+{
+	return View::make('site/account/login');
+});
+
 
 Route::get('admin', function()
 {
 	return View::make('admin/index');
 });
+
 
 /*
 App::missing(function($exception)
