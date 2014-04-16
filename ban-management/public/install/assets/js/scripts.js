@@ -4,7 +4,7 @@ function submitForm() {
 }
 
 function checkForm() {
-	return checkInput($("[name=hostname]")) && checkInput($("[name=username]")) && checkInput($("[name=password]")) && checkInput($("[name=database]")) && 
+	return checkInput($("[name=hostname]")) && checkInput($("[name=username]")) && checkInput($("[name=database]")) && 
 	checkInput($("[name=location]")) && checkURL($("[name=location]")) && checkInput($("[name=locale]")) && checkInput($("[name=key]"));
 }
 
@@ -24,7 +24,7 @@ function checkURL(e) {
   '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
   '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
   '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
-	
+
   if(!pattern.test(e.val()) && e.val().indexOf('localhost') === -1) {
 	setError(e, "Not a valid URL.");
     return false;
