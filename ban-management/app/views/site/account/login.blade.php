@@ -25,6 +25,11 @@
                         <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
                         <input class="form-control" placeholder="Password" name="password" type="password" required>
                       </div>
+                      <div class="checkbox">
+                        <label>
+                          <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                        </label>
+                      </div>
                       <button class="btn btn-lg btn-primary btn-block" type="submit"><i class="fa fa-sign-in"></i> Login</button>
                     </fieldset>
                   {{ Form::close() }}
