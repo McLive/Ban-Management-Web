@@ -11,10 +11,10 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="#"><i class="fa fa-home"></i> {{ trans('site.home') }}</a></li>
-        <li><a href="#"><i class="fa fa-users"></i> {{ trans('site.players') }}</a></li>
-        <li><a href="#"><i class="fa fa-star"></i> {{ trans('site.stats') }}</a></li>
-        <li><a href="#"><i class="fa fa-comment"></i> {{ trans('site.appeal') }}</a></li>
+        <li><a href="{{ URL::asset('/') }}"><i class="fa fa-home"></i> {{ trans('site.home') }}</a></li>
+        <li><a href="{{ URL::asset('/user') }}"><i class="fa fa-users"></i> {{ trans('site.players') }}</a></li>
+        <li><a href="{{ URL::asset('/stats') }}"><i class="fa fa-star"></i> {{ trans('site.stats') }}</a></li>
+        <li><a href="{{ URL::asset('/appeal') }}"><i class="fa fa-comment"></i> {{ trans('site.appeal') }}</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
