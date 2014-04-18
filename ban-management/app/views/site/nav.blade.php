@@ -22,23 +22,23 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="https://minotar.net/helm/{{Auth::user()->username}}/16.png" class="img-rounded" style="width: 16px; height: 16px;" alt="{{Auth::user()->username}}">{{Auth::user()->username}} <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><a href="user/{{Auth::user()->username}}"><i class="fa fa-user"></i> Profile</a></li>
-              <li><a href="appeal/user/{{Auth::user()->username}}"><i class="fa fa-comment"></i> Appeals</a></li>
-              <li><a href="account">Account</a></li>
+              <li><a href="{{URL::asset('user/');Auth::user()->username}}"><i class="fa fa-user"></i> Profile</a></li>
+              <li><a href="{{URL::asset('appeal/user/');Auth::user()->username}}"><i class="fa fa-comment"></i> Appeals</a></li>
+              <li><a href="{{URL::asset('account')}}">Account</a></li>
               <li class="divider"></li>
               @if (Auth::user()->security_level >= 2)
                 <li><a href="#">Admin Section stuff</a></li>
               @endif
               <li class="divider"></li>
-              <li><a href="account/logout"></a><i class="fa fa-sign-out"></i> Log out</li>
+              <li><a href="{{ URL::asset('account/logout')}}"></a><i class="fa fa-sign-out"></i> Log out</li>
             </ul>
           </li>
         @else
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><a href="account/login"><i class="fa fa-sign-in"></i> Login</a></li>
-              <li><a href="account/register"><i class="fa fa-edit"></i> Register</a></li>
+              <li><a href="{{URL::asset('account/login')}}"><i class="fa fa-sign-in"></i> Login</a></li>
+              <li><a href="{{URL::asset('account/register')}}"><i class="fa fa-edit"></i> Register</a></li>
             </ul>
           </li>
         @endif
