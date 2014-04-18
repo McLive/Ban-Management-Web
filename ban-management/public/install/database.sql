@@ -1,13 +1,14 @@
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(16) NOT NULL,
+  `UUID` varchar(35) NOT NULL,
   `Email` varchar(50) NOT NULL,
   `verify_code` varchar(30) NOT NULL,
   `password` varchar(60) NOT NULL COMMENT 'sha1',
   `password_temp` varchar(40),
   `security_level` int(1) NOT NULL,
   `account_status` int(1),
-  `created_at` datetime,
+  `created_at` datetime NOT NULL,
   `updated_at` datetime,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
