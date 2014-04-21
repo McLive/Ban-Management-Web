@@ -124,7 +124,7 @@
 		file_put_contents($url.'app/config/database.php', $db_config);
 
 		output(0, "");
-		output(0, "<span class=\"text-success\">Success!</span>");
+		output(0, "Success!");
 
 		sleep(4);
 
