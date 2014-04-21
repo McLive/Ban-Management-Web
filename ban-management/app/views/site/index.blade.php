@@ -1,3 +1,8 @@
+<?
+
+$servers = DB::table('servers')->get();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,11 +28,58 @@
         </div>
       </div>
 
-      <!-- Nav tabs -->
-      <ul class="nav nav-tabs">
-        <li class="active"><a href="#hub" data-toggle="tab" data-identifier="HUB">HUB</a></li>
-        <li><a href="#pvp" data-toggle="tab" data-identifier="PvP">PvP</a></li>
-      </ul>
+      <?
+      //Nav Tabs
+      if ($servers) {
+        echo '<ul class="nav nav-tabs">';
+        $count = 0;
+
+        foreach($servers as $server) {
+          //Check if the tab is the first one
+          if (!$count) {
+            echo '<li class="active"><a href="tab_'.$server->id.'" data-toggle="tab" data-identifier="stat_'.$server->id.'">'.$server->name.'</a></li>';
+          }
+          else {
+            echo '<li><a href="tab_'.$server->id.'" data-toggle="tab" data-identifier="stat_'.$server->id.'">'.$server->name.'</a></li>';
+          }
+          $count ++;
+        }
+
+        echo '</ul>';
+      }
+      else {
+        echo '<div class="alert alert-danger">';
+        echo '<strong><i class="fa fa-warning"></i> No Servers!</strong> No servers where found, please check the database data in the admin dashboard!';
+        echo '</div>';
+      }
+
+      //tab panes
+
+      if ($servers) {
+        echo '<ul class="tab-content">';
+        $count = 0;
+        foreach($servers as $server) {
+
+          //Check if the tab is the first one
+          if(!$count) {
+            echo '<li class="tab-pane fade in active" id="tab_'.$server->id.'">';
+          }
+          else {
+            echo '<li class="tab-pane fade in" id="tab_'.$server->id.'">';
+          }
+
+          //rowdiv
+          echo '<div class="row">';
+          echo '</br>';
+
+          //Panel 1-3 (Bans, kicks, stats)
+
+
+        }
+
+      }
+
+      ?>
 
       <!-- Tab panes -->
       <ul class="tab-content">
