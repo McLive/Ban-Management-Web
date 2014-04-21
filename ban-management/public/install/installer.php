@@ -28,30 +28,30 @@
 		sleep(1);
 
 		if(!is_readable($url.'app/config/app.php')) {
-			output(1, "Can't install. Can not read from app.php. (Error #002)");
+			output(1, "Can't install. Can not read <em>from app/config/app.php</em>. (Error #002)");
 			return;
 		}
 
 		if(!is_readable($url.'app/config/database.php')) {
-			output(1, "Can't install. Can not read from database.php. (Error #003)");
+			output(1, "Can't install. Can not read from <em>app/config/database.php</em>. (Error #003)");
 			return;
 		}
-		
+
 		if(!is_readable('database.sql')) {
-			output(1, "Can't install. Can not read from database.sql. (Error #008)");
+			output(1, "Can't install. Can not read from <em>public/install/database.sql</em>. (Error #008)");
 			return;
 		}
 
 		if(!is_writable($url.'app/config/app.php')) {
-			output(1, "Can't install. Can not write to app.php. (Error #004)");
+			output(1, "Can't install. Can not write to <em>app/config/app.php</em>. (Error #004)");
 			return;
 		}
 
 		if(!is_writable($url.'app/config/database.php')) {
-			output(1, "Can't install. Can not write to database.php. (Error #005)");
+			output(1, "Can't install. Can not write to <em>app/config/database.php</em>. (Error #005)");
 			return;
 		}
-		
+
 		output(0, "Connecting to database");
 		$con = @mysql_connect($_POST['hostname'], $_POST['username'], $_POST['password']);
 		if(!$con) {
@@ -59,24 +59,24 @@
 			output(1, mysql_error());
 			return;
 		}
-		
+
 		output(0, "Successfully connected");
 		output(0, "Selecting database");
-		
+
 		sleep(1);
-		
+
 		$db = @mysql_select_db($_POST['database']);
 		if(!$db) {
 			output(1, "Can't select database. Check your database information. (Error #007)");
 			output(1, mysql_error());
 			return;
 		}
-		
+
 		output(0, "Successfully opened a SQL connection.");
 		output(0, "Installing database tables");
-		
+
 		sleep(1);
-		
+
 		$templine = '';
 		$lines = file('database.sql');
 		foreach($lines as $line)
@@ -96,12 +96,12 @@
 				$templine = '';
 			}
 		}
-		
+
 		output(0, "Installed database successfully.");
 		output(0, "");
-		
+
 		sleep(1);
-		
+
 		output(0, "Opening configuration files");
 		$app_config = file_get_contents($url.'app/config/app.php');
 		$db_config = file_get_contents($url.'app/config/database.php');
@@ -122,9 +122,9 @@
 		output(0, "Saving configuration files");
 		file_put_contents($url.'app/config/app.php', $app_config);
 		file_put_contents($url.'app/config/database.php', $db_config);
-		
+
 		output(0, "");
-		output(0, "Success!");
+		output(0, "<span class=\"text-success\">Success!</span>");
 
 		sleep(4);
 
