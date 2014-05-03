@@ -1,4 +1,4 @@
-<?
+<?php
 
 $servers = DB::table('servers')->get();
 
@@ -28,7 +28,7 @@ $servers = DB::table('servers')->get();
         </div>
       </div>
 
-      <?
+      <?php
       //Nav Tabs
       if ($servers) {
         echo "<ul class=\"nav nav-tabs\">\n";
