@@ -123,6 +123,8 @@
 		file_put_contents($url.'app/config/app.php', $app_config);
 		file_put_contents($url.'app/config/database.php', $db_config);
 
+		file_put_contents($url.'public/installed.lock', "");
+		
 		output(0, "");
 		output(0, "Success!");
 
