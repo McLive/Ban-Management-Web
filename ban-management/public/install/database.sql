@@ -1,18 +1,15 @@
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(16) NOT NULL,
-  `UUID` varchar(35) NOT NULL,
-  `Email` varchar(50) NOT NULL,
-  `verify_code` varchar(30) NOT NULL,
-  `password` varchar(60) NOT NULL COMMENT 'sha1',
-  `password_temp` varchar(40),
+  `email` varchar(50) NOT NULL,
+  `password` varchar(60) NOT NULL,
   `security_level` int(1) NOT NULL,
-  `account_status` int(1),
+  `account_status` int(1) DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `servers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

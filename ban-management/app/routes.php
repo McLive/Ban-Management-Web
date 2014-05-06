@@ -16,7 +16,6 @@ Route::get('/', function()
 	return View::make('site/index');
 });
 
-
 Route::get('user', function()
 {
 	return Redirect::to('/');
@@ -24,15 +23,9 @@ Route::get('user', function()
 
 Route::get('user/{name}', 'UserController@showProfile');
 
-
-Route::get('account', function()
+Route::get('account', array('before' => 'auth', function()
 {
-	if (Auth::check()) {
-		View::make('site/account/account');
-	}
-	else {
-		return Redirect::to('account/login');
-	}
+	View::make('site/account/account');
 });
 
 Route::get('account/login', function()
@@ -40,6 +33,14 @@ Route::get('account/login', function()
 	return View::make('site/account/login');
 });
 
+Route::post('account/login', function()
+{
+	if(Auth::attempt(array('username' => Input::get('username'), 'password' => Input::get('password')))) {
+		return Redirect::intended('/');
+	}
+	
+	return View::make('site/account/login')->with('error', true);
+});
 
 Route::get('admin', function()
 {

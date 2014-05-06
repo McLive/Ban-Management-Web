@@ -16,6 +16,7 @@
                 </div>
                 <div class="panel-body">
                   {{ Form::open(array('url' => 'account/login')) }}
+					{{ isset($error) ? "Error!" : "" }}
                     <fieldset>
                       <div class="form-group input-group">
                         <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
