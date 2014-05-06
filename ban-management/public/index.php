@@ -6,6 +6,12 @@
  * @author   Taylor Otwell <taylorotwell@gmail.com>
  */
 
+// Check if installed
+if(!file_exists("installed.lock")) {
+	header("Location: ".$_SERVER['REQUEST_URI']."install/index.php");
+	return;
+}
+
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader

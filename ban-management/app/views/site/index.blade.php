@@ -1,9 +1,14 @@
+<?php
+
+$servers = DB::table('servers')->get();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     @include('site/header')
     <link rel="stylesheet" href="assets/css/morris.css">
-    <title>{{ trans('site.ba') }}</title>
+    <title>{{ trans('site.ba') }} | Home</title>
   </head>
   <body style="padding-top: 60px;">
     @include('site/nav')
@@ -23,538 +28,84 @@
         </div>
       </div>
 
-      <!-- Nav tabs -->
-      <ul class="nav nav-tabs">
-        <li class="active"><a href="#hub" data-toggle="tab" data-identifier="HUB">HUB</a></li>
-        <li><a href="#pvp" data-toggle="tab" data-identifier="PvP">PvP</a></li>
-      </ul>
+      <?php
+      //Nav Tabs
+      if ($servers) {
+        echo "<ul class=\"nav nav-tabs\">\n";
+        $count = 0;
 
-      <!-- Tab panes -->
-      <ul class="tab-content">
-        <li class="tab-pane fade in active" id="hub">
+        foreach($servers as $server) {
+          //Check if the tab is the first one
+          if (!$count) {
+            echo "<li class=\"active\"><a href=\"#tab_".$server->id."\" data-toggle=\"tab\" data-identifier=\"stat_".$server->id."\">".$server->name."</a></li>\n";
+          }
+          else {
+            echo "<li><a href=\"#tab_".$server->id."\" data-toggle=\"tab\" data-identifier=\"stat_".$server->id."\">".$server->name."</a></li>\n";
+          }
+          $count ++;
+        }
 
-          <div class="row">
-            <br/>
-            <div class="col-lg-4">
+        echo "</ul>\n";
+      }
+      else {
+        echo "<div class=\"alert alert-danger\">\n";
+        echo "<strong><i class=\"fa fa-warning\"></i> No Servers!</strong> No servers where found, please check the database data in the admin dashboard!\n";
+        echo "</div>\n";
+      }
 
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h1 class="panel-title">Recent bans</h1>
-                </div>
-                <div class="panel-body">
+      //tab panes
 
-                  <ul class="media-list">
+      if ($servers) {
+        echo "<div class=\"tab-content\">\n";
+        $count = 0;
+        foreach($servers as $server) {
 
-                    <li class="media">
-                      <a class="pull-left" href="#">
-                        <img class="media-object img-rounded" src="https://minotar.net/helm/Mr_Maccrafter/40.png" alt="Mr_Maccrafter">
-                      </a>
-                      <div class="media-body">
-                        <h5 class="media-heading">Mr_Maccrafter</h5>
-                        <time class="text-muted">banned 5 minutes ago</time>
-                      </div>
-                    </li>
+          //Check if the tab is the first one
+          if(!$count) {
+            echo "<div class=\"tab-pane fade in active\" id=\"tab_".$server->id."\">\n";
+          }
+          else {
+            echo "<div class=\"tab-pane fade\" id=\"tab_".$server->id."\">\n";
+          }
 
-                    <li class="media">
-                      <a class="pull-left" href="#">
-                        <img class="media-object img-rounded" src="https://minotar.net/helm/confuserr/40.png" alt="Confuserr">
-                      </a>
-                      <div class="media-body">
-                        <h5 class="media-heading">Confuserr</h5>
-                        <time class="text-muted">banned 8 minutes ago</time>
-                      </div>
-                    </li>
+          //Building a DB connection
+          $DB_data = $server->sql_connection;
+          $sql_connection = DB::table("sql_connections")->where("id", "=", $server->sql_connection);
 
-                    <li class="media">
-                      <a class="pull-left" href="#">
-                        <img class="media-object img-rounded" src="https://minotar.net/helm/ftbastler/40.png" alt="ftbastler">
-                      </a>
-                      <div class="media-body">
-                        <h5 class="media-heading">ftbastler</h5>
-                        <time class="text-muted">banned 14 minutes ago</time>
-                      </div>
-                    </li>
+          if (isset($sql_connection->hostname) && isset($sql_connection->username) && isset($sql_connection->password) && isset($sql_connection->database)) {
 
-                    <li class="media">
-                      <a class="pull-left" href="#">
-                        <img class="media-object img-rounded" src="https://minotar.net/helm/Notch/40.png" alt="Notch">
-                      </a>
-                      <div class="media-body">
-                        <h5 class="media-heading">Notch</h5>
-                        <time class="text-muted">banned 1 day ago</time>
-                      </div>
-                    </li>
+          $Server_DB = mysqli_connect($sql_connection->hostname,$sql_connection->username,$sql_connection->password,$sql_connection->database);
 
-                  </ul>
-                </div>
 
-              </div>
-            </div>
 
-            <div class="col-lg-4">
+            //rowdiv
+            echo "<div class=\"row\">\n";
+            echo "</br>\n";
 
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h1 class="panel-title">Recent kicks</h1>
-                </div>
-                <div class="panel-body">
+            //Panel 1-3 (Bans, kicks, stats)
 
-                  <ul class="media-list">
+            echo "</div>\n"; //End row div
 
-                    <li class="media">
-                      <a class="pull-left" href="#">
-                        <img class="media-object img-rounded" src="https://minotar.net/helm/Mr_Maccrafter/40.png" alt="Mr_Maccrafter">
-                      </a>
-                      <div class="media-body">
-                        <h5 class="media-heading">Mr_Maccrafter</h5>
-                        <time class="text-muted">kicked 5 minutes ago</time>
-                      </div>
-                    </li>
 
-                    <li class="media">
-                      <a class="pull-left" href="#">
-                        <img class="media-object img-rounded" src="https://minotar.net/helm/confuserr/40.png" alt="Confuserr">
-                      </a>
-                      <div class="media-body">
-                        <h5 class="media-heading">Confuserr</h5>
-                        <time class="text-muted">kicked 8 minutes ago</time>
-                      </div>
-                    </li>
+          }
+          //Ouput an error
+          else {
+            echo "<br/>\n";
+            echo "<div class=\"alert alert-danger\">\n";
+            echo "<strong><i class=\"fa fa-warning\"></i> DB Error</strong> DB data error, please check the DB data for DB ID: <em>".$server->sql_connection."</em>\n";
+            echo "</div>\n";
+          }
 
-                    <li class="media">
-                      <a class="pull-left" href="#">
-                        <img class="media-object img-rounded" src="https://minotar.net/helm/ftbastler/40.png" alt="ftbastler">
-                      </a>
-                      <div class="media-body">
-                        <h5 class="media-heading">ftbastler</h5>
-                        <time class="text-muted">kicked 14 minutes ago</time>
-                      </div>
-                    </li>
+          echo "</div>\n"; //End tab div
 
-                    <li class="media">
-                      <a class="pull-left" href="#">
-                        <img class="media-object img-rounded" src="https://minotar.net/helm/Notch/40.png" alt="Notch">
-                      </a>
-                      <div class="media-body">
-                        <h5 class="media-heading">Notch</h5>
-                        <time class="text-muted">kicked 1 day ago</time>
-                      </div>
-                    </li>
+        $count ++;
+        } //End foreach
+        echo "</div>\n"; //end tab-content div
 
-                  </ul>
-                </div>
 
-              </div>
-            </div>
+      }
 
-            <div class="col-lg-4">
-
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h1 class="panel-title">Statistics</h1>
-                </div>
-                <div class="panel-body">
-                  <div id="stats-HUB" style="height: 205px;"></div>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="row">
-
-            <div class="col-lg-4">
-
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h1 class="panel-title">Recent warnings</h1>
-                </div>
-                <div class="panel-body">
-
-                  <ul class="media-list">
-
-                    <li class="media">
-                      <a class="pull-left" href="#">
-                        <img class="media-object img-rounded" src="https://minotar.net/helm/Mr_Maccrafter/40.png" alt="Mr_Maccrafter">
-                      </a>
-                      <div class="media-body">
-                        <h5 class="media-heading">Mr_Maccrafter</h5>
-                        <time class="text-muted">warned 5 minutes ago</time>
-                      </div>
-                    </li>
-
-                    <li class="media">
-                      <a class="pull-left" href="#">
-                        <img class="media-object img-rounded" src="https://minotar.net/helm/confuserr/40.png" alt="Confuserr">
-                      </a>
-                      <div class="media-body">
-                        <h5 class="media-heading">Confuserr</h5>
-                        <time class="text-muted">warned 8 minutes ago</time>
-                      </div>
-                    </li>
-
-                    <li class="media">
-                      <a class="pull-left" href="#">
-                        <img class="media-object img-rounded" src="https://minotar.net/helm/ftbastler/40.png" alt="ftbastler">
-                      </a>
-                      <div class="media-body">
-                        <h5 class="media-heading">ftbastler</h5>
-                        <time class="text-muted">warned 14 minutes ago</time>
-                      </div>
-                    </li>
-
-                    <li class="media">
-                      <a class="pull-left" href="#">
-                        <img class="media-object img-rounded" src="https://minotar.net/helm/Notch/40.png" alt="Notch">
-                      </a>
-                      <div class="media-body">
-                        <h5 class="media-heading">Notch</h5>
-                        <time class="text-muted">warned 1 day ago</time>
-                      </div>
-                    </li>
-
-                  </ul>
-                </div>
-
-              </div>
-            </div>
-
-            <div class="col-lg-4">
-
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h1 class="panel-title">Recent mutes</h1>
-                </div>
-                <div class="panel-body">
-
-                  <ul class="media-list">
-
-                    <li class="media">
-                      <a class="pull-left" href="#">
-                        <img class="media-object img-rounded" src="https://minotar.net/helm/Mr_Maccrafter/40.png" alt="Mr_Maccrafter">
-                      </a>
-                      <div class="media-body">
-                        <h5 class="media-heading">Mr_Maccrafter </h5>
-                        <time class="text-muted">muted 5 minutes ago</time>
-                      </div>
-                    </li>
-
-                    <li class="media">
-                      <a class="pull-left" href="#">
-                        <img class="media-object img-rounded" src="https://minotar.net/helm/confuserr/40.png" alt="Confuserr">
-                      </a>
-                      <div class="media-body">
-                        <h5 class="media-heading">Confuserr</h5>
-                        <time class="text-muted">muted 8 minutes ago</time>
-                      </div>
-                    </li>
-
-                    <li class="media">
-                      <a class="pull-left" href="#">
-                        <img class="media-object img-rounded" src="https://minotar.net/helm/ftbastler/40.png" alt="ftbastler">
-                      </a>
-                      <div class="media-body">
-                        <h5 class="media-heading">ftbastler</h5>
-                        <time class="text-muted">muted 14 minutes ago</time>
-                      </div>
-                    </li>
-
-                    <li class="media">
-                      <a class="pull-left" href="#">
-                        <img class="media-object img-rounded" src="https://minotar.net/helm/Notch/40.png" alt="Notch">
-                      </a>
-                      <div class="media-body">
-                        <h5 class="media-heading">Notch</h5>
-                        <time class="text-muted">muted 1 day ago</time>
-                      </div>
-                    </li>
-
-                  </ul>
-                </div>
-
-              </div>
-            </div>
-
-            <div class="col-lg-4">
-
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h1 class="panel-title">Placeholder</h1>
-                </div>
-                <div class="panel-body">
-                  <p>Some sort of server button</p>
-                </div>
-              </div>
-
-            </div>
-
-        </div>
-      </li> <!--End first tab-->
-
-      <li class="tab-pane fade" id="pvp">
-
-        <div class="row">
-          <br/>
-          <div class="col-lg-4">
-
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h1 class="panel-title">Recent bans</h1>
-              </div>
-              <div class="panel-body">
-
-                <ul class="media-list">
-
-                  <li class="media">
-                    <a class="pull-left" href="#">
-                      <img class="media-object img-rounded" src="https://minotar.net/helm/confuserr/40.png" alt="Confuserr">
-                    </a>
-                    <div class="media-body">
-                      <h5 class="media-heading">Confuserr</h5>
-                      <time class="text-muted">banned 1 minute ago</time>
-                    </div>
-                  </li>
-
-                  <li class="media">
-                    <a class="pull-left" href="#">
-                      <img class="media-object img-rounded" src="https://minotar.net/helm/Mr_Maccrafter/40.png" alt="Mr_Maccrafter">
-                    </a>
-                    <div class="media-body">
-                      <h5 class="media-heading">Mr_Maccrafter</h5>
-                      <time class="text-muted">banned 5 minutes ago</time>
-                    </div>
-                  </li>
-
-                  <li class="media">
-                    <a class="pull-left" href="#">
-                      <img class="media-object img-rounded" src="https://minotar.net/helm/Notch/40.png" alt="Notch">
-                    </a>
-                    <div class="media-body">
-                      <h5 class="media-heading">Notch</h5>
-                      <time class="text-muted">banned 1 day ago</time>
-                    </div>
-                  </li>
-
-                  <li class="media">
-                    <a class="pull-left" href="#">
-                      <img class="media-object img-rounded" src="https://minotar.net/helm/ftbastler/40.png" alt="ftbastler">
-                    </a>
-                    <div class="media-body">
-                      <h5 class="media-heading">ftbastler</h5>
-                      <time class="text-muted">banned 14 days ago</time>
-                    </div>
-                  </li>
-
-                </ul>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h1 class="panel-title">Recent kicks</h1>
-              </div>
-              <div class="panel-body">
-
-                <ul class="media-list">
-
-                  <li class="media">
-                    <a class="pull-left" href="#">
-                      <img class="media-object img-rounded" src="https://minotar.net/helm/Mr_Maccrafter/40.png" alt="Mr_Maccrafter">
-                    </a>
-                    <div class="media-body">
-                      <h5 class="media-heading">Mr_Maccrafter</h5>
-                      <time class="text-muted">kicked 5 minutes ago</time>
-                    </div>
-                  </li>
-
-                  <li class="media">
-                    <a class="pull-left" href="#">
-                      <img class="media-object img-rounded" src="https://minotar.net/helm/confuserr/40.png" alt="Confuserr">
-                    </a>
-                    <div class="media-body">
-                      <h5 class="media-heading">Confuserr</h5>
-                      <time class="text-muted">kicked 8 minutes ago</time>
-                    </div>
-                  </li>
-
-                  <li class="media">
-                    <a class="pull-left" href="#">
-                      <img class="media-object img-rounded" src="https://minotar.net/helm/ftbastler/40.png" alt="ftbastler">
-                    </a>
-                    <div class="media-body">
-                      <h5 class="media-heading">ftbastler</h5>
-                      <time class="text-muted">kicked 14 minutes ago</time>
-                    </div>
-                  </li>
-
-                  <li class="media">
-                    <a class="pull-left" href="#">
-                      <img class="media-object img-rounded" src="https://minotar.net/helm/Notch/40.png" alt="Notch">
-                    </a>
-                    <div class="media-body">
-                      <h5 class="media-heading">Notch</h5>
-                      <time class="text-muted">kicked 1 day ago</time>
-                    </div>
-                  </li>
-
-                </ul>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h1 class="panel-title">Statistics</h1>
-              </div>
-              <div class="panel-body">
-                <div id="stats-PvP" style="height: 205px;"></div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-4">
-
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h1 class="panel-title">Recent warnings</h1>
-              </div>
-              <div class="panel-body">
-
-                <ul class="media-list">
-
-                  <li class="media">
-                    <a class="pull-left" href="#">
-                      <img class="media-object img-rounded" src="https://minotar.net/helm/Mr_Maccrafter/40.png" alt="Mr_Maccrafter">
-                    </a>
-                    <div class="media-body">
-                      <h5 class="media-heading">Mr_Maccrafter</h5>
-                      <time class="text-muted">warned 5 minutes ago</time>
-                    </div>
-                  </li>
-
-                  <li class="media">
-                    <a class="pull-left" href="#">
-                      <img class="media-object img-rounded" src="https://minotar.net/helm/confuserr/40.png" alt="Confuserr">
-                    </a>
-                    <div class="media-body">
-                      <h5 class="media-heading">Confuserr</h5>
-                      <time class="text-muted">warned 8 minutes ago</time>
-                    </div>
-                  </li>
-
-                  <li class="media">
-                    <a class="pull-left" href="#">
-                      <img class="media-object img-rounded" src="https://minotar.net/helm/ftbastler/40.png" alt="ftbastler">
-                    </a>
-                    <div class="media-body">
-                      <h5 class="media-heading">ftbastler</h5>
-                      <time class="text-muted">warned 14 minutes ago</time>
-                    </div>
-                  </li>
-
-                  <li class="media">
-                    <a class="pull-left" href="#">
-                      <img class="media-object img-rounded" src="https://minotar.net/helm/Notch/40.png" alt="Notch">
-                    </a>
-                    <div class="media-body">
-                      <h5 class="media-heading">Notch</h5>
-                      <time class="text-muted">warned 1 day ago</time>
-                    </div>
-                  </li>
-
-                </ul>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h1 class="panel-title">Recent mutes</h1>
-              </div>
-              <div class="panel-body">
-
-                <ul class="media-list">
-
-                  <li class="media">
-                    <a class="pull-left" href="#">
-                      <img class="media-object img-rounded" src="https://minotar.net/helm/Mr_Maccrafter/40.png" alt="Mr_Maccrafter">
-                    </a>
-                    <div class="media-body">
-                      <h5 class="media-heading">Mr_Maccrafter </h5>
-                      <time class="text-muted">muted 5 minutes ago</time>
-                    </div>
-                  </li>
-
-                  <li class="media">
-                    <a class="pull-left" href="#">
-                      <img class="media-object img-rounded" src="https://minotar.net/helm/confuserr/40.png" alt="Confuserr">
-                    </a>
-                    <div class="media-body">
-                      <h5 class="media-heading">Confuserr</h5>
-                      <time class="text-muted">muted 8 minutes ago</time>
-                    </div>
-                  </li>
-
-                  <li class="media">
-                    <a class="pull-left" href="#">
-                      <img class="media-object img-rounded" src="https://minotar.net/helm/ftbastler/40.png" alt="ftbastler">
-                    </a>
-                    <div class="media-body">
-                      <h5 class="media-heading">ftbastler</h5>
-                      <time class="text-muted">muted 14 minutes ago</time>
-                    </div>
-                  </li>
-
-                  <li class="media">
-                    <a class="pull-left" href="#">
-                      <img class="media-object img-rounded" src="https://minotar.net/helm/Notch/40.png" alt="Notch">
-                    </a>
-                    <div class="media-body">
-                      <h5 class="media-heading">Notch</h5>
-                      <time class="text-muted">muted 1 day ago</time>
-                    </div>
-                  </li>
-
-                </ul>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h1 class="panel-title">Placeholder</h1>
-              </div>
-              <div class="panel-body">
-                <p>Some sort of server button</p>
-              </div>
-            </div>
-
-          </div>
-
-      </div>
-    </li> <!--End second tab-->
-
-    </ul>
-
+      ?>
     </div><!-- /.container -->
     <script src="assets/js/raphael.min.js"></script>
     <script src="assets/js/morris.js"></script>
