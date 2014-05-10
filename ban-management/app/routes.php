@@ -26,7 +26,7 @@ Route::get('user/{name}', 'UserController@showProfile');
 Route::get('account', array('before' => 'auth', function()
 {
 	View::make('site/account/account');
-});
+}));
 
 Route::get('account/login', function()
 {
